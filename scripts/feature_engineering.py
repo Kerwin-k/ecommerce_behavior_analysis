@@ -1,4 +1,4 @@
-# scripts/feature_engineering.py
+# scripts/feature_engineering.py (最终修正版)
 
 import pandas as pd
 import os
@@ -31,6 +31,7 @@ def calculate_rfm(df):
         'TotalPrice': 'sum'
     })
 
+    # 确保在这里就将列名彻底改对
     rfm_data.rename(columns={
         'InvoiceDate': 'Recency',
         'Invoice': 'Frequency',
@@ -38,7 +39,7 @@ def calculate_rfm(df):
     }, inplace=True)
 
     print("RFM calculation complete!")
-    print("RFM data sample:\n", rfm_data.head())
+    print("RFM data sample with correct column names:\n", rfm_data.head())
 
     return rfm_data
 
@@ -46,12 +47,13 @@ def calculate_rfm(df):
 def save_rfm_data(df_rfm):
     """将 RFM 数据保存到 processed 文件夹"""
     rfm_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'processed', 'rfm_data.csv')
+    # 这里我们将 Customer ID (索引) 也保存到文件里
     df_rfm.to_csv(rfm_path, index=True)
     print(f"\nRFM data successfully saved to: {rfm_path}")
 
 
 if __name__ == "__main__":
-    print("--- Feature Engineering Script Started ---")
+    print("--- Feature Engineering Script Started (Corrected Version) ---")
     df_cleaned = load_cleaned_data()
 
     df_rfm = calculate_rfm(df_cleaned)
