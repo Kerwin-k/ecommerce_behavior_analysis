@@ -37,43 +37,6 @@ ecommerce_behavior_analysis/
     * `Pandas`: 用于数据处理和分析
     * `Scikit-learn`: 用于机器学习（建模与评估）
     * `Matplotlib` & `Seaborn`: 用于数据可视化
-
-## 4. 如何运行
-
-1.  **克隆项目到本地:**
-    ```bash
-    git clone [你的项目GitHub链接]
-    cd ecommerce_behavior_analysis
-    ```
-
-2.  **安装依赖:**
-    建议在虚拟环境中安装，以避免包版本冲突。
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  **按顺序执行脚本:**
-    整个分析流程必须按以下顺序在终端中运行：
-
-    ```bash
-    # 1. 清洗原始数据
-    python scripts/data_cleaning.py
-
-    # 2. 计算RFM指标
-    python scripts/feature_engineering.py
-
-    # 3. 基于RFM进行打分和客户分层
-    python scripts/rfm_analysis.py
-
-    # 4. 为流失模型准备标签
-    python scripts/churn_label.py
-
-    # 5. 训练并评估流失预测模型
-    python scripts/model_training.py
-
-    # 6. 生成所有汇总的可视化图表
-    python scripts/visualization.py
-    ```
     
 ## 4. 如何运行
 
