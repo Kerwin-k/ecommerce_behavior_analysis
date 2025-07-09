@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation: E-commerce Customer Behavior Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-snap-type: y mandatory;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(to bottom right, #f8fafc, #e0f2fe); /* slate-50 to sky-100 */
+        }
+        .slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .slide-content-wrapper {
+            width: 100%;
+            max-width: 1280px; /* max-w-7xl */
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            padding: 2rem 3rem;
+        }
+        @media (min-width: 768px) {
+            .slide-content-wrapper {
+                padding: 3rem 4rem;
+            }
+        }
+        .highlight {
+            background-image: linear-gradient(to top right, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.2)); /* sky-400, sky-500 */
+            color: #0369a1; /* sky-700 */
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+        }
+        .chapter-title {
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(226, 232, 240, 0.8); /* slate-200 */
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: -1;
+            line-height: 1;
+        }
+        .chart-wrapper {
+            background-color: #f1f5f9; /* slate-100 */
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px solid #e2e8f0; /* slate-200 */
+            width: 100%;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Slide 1: Title Slide -->
+    <section class="slide">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">E-commerce Customer<br>Behavior Analysis</h1>
+            <p class="mt-6 text-2xl md:text-3xl font-medium text-slate-600">From Customer Segmentation to Churn Prediction</p>
+            <div class="mt-12 border-t border-slate-300/70 pt-6">
+                <p class="text-xl text-slate-500">Presented by</p>
+                <p class="text-2xl font-semibold text-slate-700 mt-2">[Your Name(s)]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Agenda -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <h2 class="text-4xl font-bold text-slate-900 mb-10 text-center">Agenda</h2>
+            <ol class="list-decimal list-inside space-y-4 text-2xl text-slate-700 max-w-3xl mx-auto">
+                <li><span class="font-semibold">Introduction:</span> Project Objectives & Methodology</li>
+                <li><span class="font-semibold">Data Preparation:</span> Cleaning & Feature Engineering</li>
+                <li><span class="font-semibold">Descriptive Analysis:</span> Customer Segmentation Findings</li>
+                <li><span class="font-semibold">Predictive Analysis:</span> Customer Churn Model Results</li>
+                <li><span class="font-semibold">Strategic Recommendations & Conclusion</span></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Slide 3: Chapter 1 Title -->
+    <section class="slide">
+        <div class="text-center">
+            <p class="text-2xl text-cyan-600 font-semibold">Part 1</p>
+            <h2 class="text-6xl font-extrabold text-slate-900 mt-2">Introduction & Methodology</h2>
+        </div>
+    </section>
+
+    <!-- Slide 4: Introduction & Objectives -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">01</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-10 text-center">Project Objectives</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Background</h3>
+                    <p class="text-lg text-slate-700 leading-relaxed">In a competitive e-commerce landscape, understanding and retaining customers is critical for sustainable growth. This project aims to transform <span class="highlight">raw transactional data</span> into actionable business intelligence.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Core Questions</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-cyan-500 font-bold text-2xl mr-4">&#10140;</span>
+                            <span class="text-lg text-slate-700"><strong>Who are our customers?</strong> By segmenting users into distinct value groups.</span>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-cyan-500 font-bold text-2xl mr-4">&#10140;</span>
+                            <span class="text-lg text-slate-700"><strong>Who might we lose?</strong> By proactively identifying customers at high risk of churning.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Chapter 2 Title -->
+    <section class="slide">
+        <div class="text-center">
+            <p class="text-2xl text-cyan-600 font-semibold">Part 2</p>
+            <h2 class="text-6xl font-extrabold text-slate-900 mt-2">Data Preparation</h2>
+        </div>
+    </section>
+
+    <!-- Slide 6: Data Cleaning -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">02</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-8 text-center">Data Cleaning Process</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white/50 p-6 rounded-xl border">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Before Cleaning</h3>
+                    <p class="text-5xl font-bold text-red-500">1,067,371</p>
+                    <p class="text-lg font-medium text-slate-600">Total Raw Records</p>
+                    <ul class="list-disc list-inside mt-4 text-slate-700 space-y-1">
+                        <li>Contained missing Customer IDs</li>
+                        <li>Included returns & zero-price items</li>
+                        <li>Had duplicate entries</li>
+                    </ul>
+                </div>
+                <div class="bg-white/50 p-6 rounded-xl border">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">After Cleaning</h3>
+                    <p class="text-5xl font-bold text-green-600">779,425</p>
+                    <p class="text-lg font-medium text-slate-600">High-Quality Records</p>
+                    <ul class="list-disc list-inside mt-4 text-slate-700 space-y-1">
+                        <li>All records have a valid Customer ID</li>
+                        <li>Only positive quantity and price</li>
+                        <li>Duplicates removed</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-slate-600">This rigorous process ensures our analysis is built on a <span class="highlight">reliable and accurate</span> data foundation.</p>
+        </div>
+    </section>
+
+    <!-- Slide 7: Chapter 3 Title -->
+    <section class="slide">
+        <div class="text-center">
+            <p class="text-2xl text-cyan-600 font-semibold">Part 3</p>
+            <h2 class="text-6xl font-extrabold text-slate-900 mt-2">Descriptive Analysis</h2>
+        </div>
+    </section>
+
+    <!-- Slide 8: RFM Distributions -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">03</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-8 text-center">Understanding RFM Distributions</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="chart-wrapper">
+                    <img src="../reports/figures/rfm_distributions.png" alt="Histograms showing the distribution of Recency, Frequency, and Monetary values" class="max-w-full max-h-full object-contain">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Interpretation</h3>
+                    <p class="text-lg text-slate-700 mb-4">These histograms show the distribution of RFM values across all customers.</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>Recency (R):</strong> A large number of customers have high Recency values (haven't purchased in a long time), an early indicator of our churn problem.</li>
+                        <li><strong>Frequency (F) & Monetary (M):</strong> Both distributions are heavily <span class="highlight">right-skewed</span>. This classic retail pattern shows that most customers purchase infrequently, while a small group of power users are responsible for high spending.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Segmentation Results -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">03</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-8 text-center">Finding: Customer Segment Distribution</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="chart-wrapper">
+                    <img src="../reports/figures/customer_segmentation_distribution.png" alt="Bar chart showing the number of customers in each segment" class="max-w-full max-h-full object-contain">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Interpretation</h3>
+                    <p class="text-lg text-slate-700 mb-4">This chart displays the final customer segments, providing a clear snapshot of our customer base's health.</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>Key Challenge:</strong> The <span class="highlight">"At-Risk"</span> segment is the largest, confirming that customer retention is the most critical issue to address.</li>
+                        <li><strong>Core Strength:</strong> The business is supported by a strong foundation of <span class="highlight">"Champions"</span> and <span class="highlight">"Loyal Customers"</span>, who are the primary revenue drivers.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Additional Insights -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">03</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-8 text-center">Finding: Sales & Geographic Patterns</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex flex-col">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 text-center">Monthly Sales Trend</h3>
+                    <div class="chart-wrapper flex-grow">
+                        <img src="../reports/figures/monthly_sales_trend.png" alt="Line chart showing total sales per month" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <p class="text-center mt-4 text-slate-700">Sales show strong seasonality, peaking in <span class="highlight">November</span>, likely due to holiday shopping.</p>
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 text-center">Top Markets (Excl. UK)</h3>
+                    <div class="chart-wrapper flex-grow">
+                        <img src="../reports/figures/top_10_countries.png" alt="Bar chart showing top 10 countries by sales" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <p class="text-center mt-4 text-slate-700"><span class="highlight">Germany</span> is the largest secondary market, representing a key area for international growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 11: Chapter 4 Title -->
+    <section class="slide">
+        <div class="text-center">
+            <p class="text-2xl text-cyan-600 font-semibold">Part 4</p>
+            <h2 class="text-6xl font-extrabold text-slate-900 mt-2">Predictive Analysis</h2>
+        </div>
+    </section>
+
+    <!-- Slide 12: Churn Model Results -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">04</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-8 text-center">Finding: Predictive Model Performance</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="chart-wrapper">
+                    <img src="../reports/figures/churn_confusion_matrix.png" alt="Confusion matrix for the churn prediction model" class="max-w-full max-h-full object-contain">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Interpretation</h3>
+                    <p class="text-lg text-slate-700 mb-4">We trained a Logistic Regression model to predict churn. The confusion matrix shows its performance on unseen test data.</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>High Accuracy:</strong> The model achieves an overall accuracy of approximately <span class="highlight">90%</span>.</li>
+                        <li><strong>Excellent Recall:</strong> More importantly, the model has a <span class="highlight">Recall of 90%</span> for the churn class. This means it successfully identifies 9 out of 10 customers who are actually going to churn, making it highly effective for targeted retention campaigns.</li>
+                        <li><strong>Business Value:</strong> This predictive power allows the business to move from being reactive to proactive, saving customers before they are lost.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 13: Chapter 5 Title -->
+    <section class="slide">
+        <div class="text-center">
+            <p class="text-2xl text-cyan-600 font-semibold">Part 5</p>
+            <h2 class="text-6xl font-extrabold text-slate-900 mt-2">Recommendations & Conclusion</h2>
+        </div>
+    </section>
+
+    <!-- Slide 14: Business Recommendations -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">05</div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-10 text-center">Actionable Recommendations</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/50 p-6 rounded-lg border-t-4 border-teal-500 shadow-lg">
+                    <h3 class="text-2xl font-bold text-teal-800 mb-3">For Champions</h3>
+                    <p class="font-semibold text-slate-700 mb-4">Goal: Reward & Retain</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li>Implement a VIP program with exclusive benefits.</li>
+                        <li>Encourage them to become brand advocates.</li>
+                    </ul>
+                </div>
+                <div class="bg-white/50 p-6 rounded-lg border-t-4 border-orange-500 shadow-lg">
+                    <h3 class="text-2xl font-bold text-orange-800 mb-3">For At-Risk Customers</h3>
+                    <p class="font-semibold text-slate-700 mb-4">Goal: Proactive Reactivation</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li>Use the predictive model to target this group.</li>
+                        <li>Launch "win-back" campaigns with personalized discounts.</li>
+                    </ul>
+                </div>
+                <div class="bg-white/50 p-6 rounded-lg border-t-4 border-cyan-500 shadow-lg">
+                    <h3 class="text-2xl font-bold text-cyan-800 mb-3">For New Customers</h3>
+                     <p class="font-semibold text-slate-700 mb-4">Goal: Nurture & Convert</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li>Create a welcome email series to build engagement.</li>
+                        <li>Offer an incentive for their second purchase.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 15: Conclusion & Future Work -->
+    <section class="slide">
+        <div class="slide-content-wrapper">
+            <div class="chapter-title">05</div>
+             <h2 class="text-4xl font-bold text-slate-900 mb-10 text-center">Conclusion & Future Work</h2>
+             <div class="grid md:grid-cols-2 gap-12">
+                 <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Conclusion</h3>
+                    <p class="text-lg text-slate-700 leading-relaxed">This project successfully demonstrates an end-to-end data analysis pipeline. We have moved from raw data to <span class="highlight">descriptive</span> and <span class="highlight">predictive</span> insights, providing clear, data-driven strategies to enhance customer retention and drive business growth.</p>
+                 </div>
+                 <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4">Future Work</h3>
+                     <ul class="list-disc list-inside space-y-2 text-slate-700 text-lg">
+                        <li><strong>Enhance Model:</strong> Use more features & advanced algorithms (XGBoost).</li>
+                        <li><strong>Basket Analysis:</strong> Analyze which products are bought together.</li>
+                        <li><strong>CLV Prediction:</strong> Forecast total Customer Lifetime Value.</li>
+                    </ul>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Slide 16: Q&A -->
+    <section class="slide">
+        <div class="text-center">
+            <h2 class="text-6xl md:text-8xl font-extrabold text-slate-900">Thank You</h2>
+            <p class="mt-8 text-4xl font-semibold text-cyan-600">Q & A</p>
+        </div>
+    </section>
+
+</body>
+</html>
