@@ -42,7 +42,7 @@ ecommerce_behavior_analysis/
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [Your Project's GitHub URL]
+    git clone https://github.com/Kerwin-k/ecommerce_behavior_analysis.git
     cd ecommerce_behavior_analysis
     ```
 

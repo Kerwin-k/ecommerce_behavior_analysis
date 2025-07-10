@@ -42,7 +42,7 @@ ecommerce_behavior_analysis/
 
 1.  **克隆项目到本地:**
     ```bash
-    git clone [你的项目GitHub链接]
+    git clone https://github.com/Kerwin-k/ecommerce_behavior_analysis.git
     cd ecommerce_behavior_analysis
     ```
 
