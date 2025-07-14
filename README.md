@@ -89,7 +89,7 @@ Customers were scored on each dimension and then grouped into 8 distinct segment
 
 ### 5.3 Predictive Modeling (Customer Churn Prediction)
 To predict customer churn, we developed a machine learning model:
--   **Label Definition:** Customers in the 'At Risk' and 'Hibernating' segments were labeled as "Churned" (1), while all others were labeled as "Active" (0).
+-   **Label Definition:** Customers in the '**At Risk**' and '**Hibernating**' segments were labeled as "Churned" (1), while all others were labeled as "Active" (0).
 -   **Feature Selection:** The calculated `Recency`, `Frequency`, and `Monetary` values were used as the input features for the model.
 -   **Model & Evaluation:** A Logistic Regression model was trained on 80% of the data. On the remaining 20% test set, the model achieved an **accuracy of ~90%** and, more importantly, a **recall of 90%** for the churned class, successfully identifying 9 out of 10 customers who were at risk of churning.
 

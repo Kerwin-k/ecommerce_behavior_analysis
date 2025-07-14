@@ -51,8 +51,8 @@ def calculate_scores_and_segments(df_rfm):
             return 'Need Attention'
         if not is_f_high and not is_m_high:
             if not is_r_high:
-                return 'At Risk'
-            return 'Hibernating'
+                return 'At Risk'   # churn
+            return 'Hibernating'   # churn
         return 'About to Sleep'
 
     df_rfm['Segment'] = df_rfm.apply(segment_customer, axis=1)
