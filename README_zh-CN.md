@@ -85,7 +85,29 @@ ecommerce_behavior_analysis/
 -   **R (Recency):** 最近一次消费时间
 -   **F (Frequency):** 消费频率
 -   **M (Monetary):** 消费金额
+
 通过对每个维度进行打分，我们将客户划分为8个不同的群体，如“高价值客户”、“流失风险客户”等。
+``` bash
+is_r_high = row['R_Score'] > avg_r
+        is_f_high = row['F_Score'] > avg_f
+        is_m_high = row['M_Score'] > avg_m
+
+        if is_r_high and is_f_high and is_m_high:
+            return 'Champions'
+        if is_f_high and is_m_high:
+            return 'Loyal Customers'
+        if is_r_high and is_f_high:
+            return 'Potential Loyalists'
+        if is_r_high:
+            return 'New Customers'
+        if is_f_high:
+            return 'Need Attention'
+        if not is_f_high and not is_m_high:
+            if not is_r_high:
+                return 'At Risk'   # churn
+            return 'Hibernating'   # churn
+        return 'About to Sleep'
+```
 
 ### 5.3 预测性建模 (客户流失预测)
 我们构建了一个机器学习模型来预测客户流失：

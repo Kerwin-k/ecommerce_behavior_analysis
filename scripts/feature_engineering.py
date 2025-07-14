@@ -53,7 +53,7 @@ def save_rfm_data(df_rfm):
 
 
 if __name__ == "__main__":
-    print("--- Feature Engineering Script Started (Corrected Version) ---")
+    print("--- Feature Engineering Script Started ---")
     df_cleaned = load_cleaned_data()
 
     df_rfm = calculate_rfm(df_cleaned)

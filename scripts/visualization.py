@@ -70,7 +70,7 @@ def plot_segment_scatter(df_segments, output_path):
 def plot_monthly_sales(df_cleaned, output_path):
     """绘制月度销售总额趋势图"""
     print("Generating monthly sales trend plot...")
-    # 重新计算TotalPrice，因为之前的脚本没有保存它
+    # 重新计算TotalPrice
     df_cleaned['TotalPrice'] = df_cleaned['Quantity'] * df_cleaned['Price']
 
     # 将InvoiceDate设置为索引，方便按时间重采样

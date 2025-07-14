@@ -82,10 +82,34 @@ The original dataset was cleaned by removing records with missing `Customer ID`,
 
 ### 5.2 Customer Segmentation (RFM Model)
 We used the RFM model to quantify customer value based on:
--   **R (Recency):** How recently a customer made a purchase.
+-   **R (Recency):** How recently a customer made a purchase. 
+    `The customer's most recent purchase date (the smaller the value, the more recent the purchase date)`
 -   **F (Frequency):** How often they make purchases.
--   **M (Monetary):** How much money they spend.
+    `Number of purchases 'Invoice': 'nunique'`
+-   **M (Monetary):** How much money they spend.`TotalPrice`
+
 Customers were scored on each dimension and then grouped into 8 distinct segments, such as 'Champions', 'At Risk', etc.
+``` bash
+is_r_high = row['R_Score'] > avg_r
+        is_f_high = row['F_Score'] > avg_f
+        is_m_high = row['M_Score'] > avg_m
+
+        if is_r_high and is_f_high and is_m_high:
+            return 'Champions'
+        if is_f_high and is_m_high:
+            return 'Loyal Customers'
+        if is_r_high and is_f_high:
+            return 'Potential Loyalists'
+        if is_r_high:
+            return 'New Customers'
+        if is_f_high:
+            return 'Need Attention'
+        if not is_f_high and not is_m_high:
+            if not is_r_high:
+                return 'At Risk'   # churn
+            return 'Hibernating'   # churn
+        return 'About to Sleep'
+```
 
 ### 5.3 Predictive Modeling (Customer Churn Prediction)
 To predict customer churn, we developed a machine learning model:

@@ -50,13 +50,14 @@ def train_and_evaluate_model(df):
     print("\nEvaluating model on the test set...")
     y_pred = model.predict(X_test)
 
+    # 模型预测准确率（预测值pred，与实际值test对比）
     accuracy = accuracy_score(y_test, y_pred)
     print(f"\nModel Accuracy: {accuracy:.2%}")
 
     print("\nClassification Report:")
     print(classification_report(y_test, y_pred, target_names=['Not Churned (0)', 'Churned (1)']))
 
-    # 5. 可视化混淆矩阵
+    # 可视化混淆矩阵
     cm = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',

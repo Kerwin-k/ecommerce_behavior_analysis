@@ -22,6 +22,9 @@ def load_rfm_data():
 
 def calculate_scores_and_segments(df_rfm):
     """计算RFM分数，并根据分数进行客户分层"""
+
+    # Score分数为1-5
+    # R,F,M得分越高越好
     df_rfm['R_Score'] = pd.qcut(df_rfm['Recency'], 5, labels=[5, 4, 3, 2, 1])
     df_rfm['F_Score'] = pd.qcut(df_rfm['Frequency'].rank(method='first'), 5, labels=[1, 2, 3, 4, 5])
     df_rfm['M_Score'] = pd.qcut(df_rfm['Monetary'], 5, labels=[1, 2, 3, 4, 5])
@@ -29,7 +32,7 @@ def calculate_scores_and_segments(df_rfm):
     print("\nRFM scores calculated.")
     print("Data sample with scores:\n", df_rfm.head())
 
-    # 定义客户分层逻辑
+    # 定义客户分层逻辑，计算Score平均值
     avg_r = df_rfm['R_Score'].astype(float).mean()
     avg_f = df_rfm['F_Score'].astype(float).mean()
     avg_m = df_rfm['M_Score'].astype(float).mean()
@@ -55,6 +58,7 @@ def calculate_scores_and_segments(df_rfm):
             return 'Hibernating'   # churn
         return 'About to Sleep'
 
+    # 逐行传递调用segment_customer函数，为了给每个CustomerID打标签（客户类型）
     df_rfm['Segment'] = df_rfm.apply(segment_customer, axis=1)
     print("\nCustomer segmentation complete!")
     print("Final segmented data sample:\n", df_rfm.head())
